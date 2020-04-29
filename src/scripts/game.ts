@@ -9,10 +9,10 @@ import PauseScene from './scenes/pauseScene';
 
 const DEFAULT_WIDTH = 400;
 const DEFAULT_HEIGHT = 400;
-
+const NUMBER_OF_LEVELS = 3;
 
 const config: GameConfig = {
-    backgroundColor: '#ffffff',
+    backgroundColor: '#000',
     scale: {
         parent: 'phaser-game',
         mode: Phaser.Scale.FIT,

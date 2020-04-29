@@ -6,8 +6,8 @@ type TextStyle = Phaser.Types.GameObjects.Text.TextStyle;
  * https://snowbillr.github.io/blog//2018-07-03-buttons-in-phaser-3/
  */
 export class TransitionButton extends Phaser.GameObjects.Text {
-    constructor(scene: Phaser.Scene, x: number, y: number, text: string, style: TextStyle, callback) {
-        super(scene, x, y, text, style);
+    constructor(scene: Phaser.Scene, y: number, text: string, callback) {
+        super(scene, scene.scale.width / 2, y, text, {});
 
         this.setInteractive({ useHandCursor: true })
             .on('pointerover', () => this.enterButtonHoverState())
