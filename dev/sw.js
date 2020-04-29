@@ -1,4 +1,4 @@
-importScripts("/educational-scene-changer/devprecache-manifest.3e086415e601a1021519c2ff5b812a1e.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+importScripts("/phaser-scene-changer/devprecache-manifest.15518e989b895338736738d71e2b3891.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 /**
  * You should only modify this, if you know what you are doing.
