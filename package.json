@@ -1,11 +1,11 @@
 {
-  "name": "educational-scene-changer",
+  "name": "phaser-scene-changer",
   "version": "0.0.2",
   "description": "Phaser 3 starter template for educational games, using TypeScript, webpack, and Github Pages.",
   "homepage": "https://github.com/acbart/educational-phaser-game-template#readme",
   "main": "index.js",
   "game": {
-    "url": "educational-scene-changer",
+    "url": "phaser-scene-changer",
     "shortName": "EdGame",
     "name": "Educational Phaser Game Template"
   },
