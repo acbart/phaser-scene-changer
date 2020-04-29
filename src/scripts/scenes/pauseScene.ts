@@ -8,7 +8,7 @@ export default class PauseScene extends Phaser.Scene {
     }
 
     create() {
-        this.exampleObject = new ExampleObject(this, 0, 0);
+        this.add.image(0, 0, "pause");
     }
 
     init() {

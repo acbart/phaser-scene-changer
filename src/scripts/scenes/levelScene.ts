@@ -2,13 +2,15 @@ import ExampleObject from '../objects/exampleObject';
 
 export default class LevelScene extends Phaser.Scene {
     private exampleObject: ExampleObject;
+    levelNumber: number;
 
-    constructor() {
-        super({ key: 'LevelScene' });
+    constructor(levelNumber: number) {
+        super({ key: 'LevelScene' + levelNumber });
+        this.levelNumber = levelNumber;
     }
 
     create() {
-        this.exampleObject = new ExampleObject(this, 0, 0);
+        this.add.image(0, 0, "level" + this.levelNumber);
     }
 
     init() {
