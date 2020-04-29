@@ -1,7 +1,10 @@
 import 'phaser';
-import MainScene from './scenes/mainScene';
-import PreloadScene from './scenes/preloadScene';
 import GameConfig = Phaser.Types.Core.GameConfig;
+import PreloadScene from './scenes/preloadScene';
+import TutorialScene from './scenes/tutorialScene';
+import LevelScene from './scenes/levelScene';
+import GameOver from './scenes/gameOver';
+import MainMenu from './scenes/mainMenu';
 
 const DEFAULT_WIDTH = 400;
 const DEFAULT_HEIGHT = 400;
@@ -16,7 +19,7 @@ const config: GameConfig = {
         width: DEFAULT_WIDTH,
         height: DEFAULT_HEIGHT
     },
-    scene: [PreloadScene, MainScene],
+    scene: [PreloadScene, MainMenu, TutorialScene, LevelScene, GameOver],
     physics: {
         default: 'arcade',
         arcade: {
