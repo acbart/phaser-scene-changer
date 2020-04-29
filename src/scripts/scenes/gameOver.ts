@@ -1,18 +1,22 @@
-import ExampleObject from '../objects/exampleObject';
+import DraggableImage from "../objects/draggableImage";
 
 export default class GameOver extends Phaser.Scene {
-    private exampleObject: ExampleObject;
-
+    importantImage: DraggableImage;
+    startX: number;
+    startY: number;
     constructor() {
         super({ key: 'GameOver' });
     }
 
-    init() {
-
+    init(data) {
+        this.startX = data.lastX;
+        this.startY = data.lastY;
     }
 
     create() {
-        this.add.image(0, 0, "gameOver").setOrigin(0, 0);
+        this.importantImage = new DraggableImage(this, this.startX, this.startY, "gameOver");
+        this.add.existing(this.importantImage);
+
         this.add.text(this.scale.width / 2, this.scale.height * 2 / 3, "No more game!");
     }
 

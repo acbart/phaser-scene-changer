@@ -1,25 +1,33 @@
-import ExampleObject from '../objects/exampleObject';
 import { TransitionButton } from '../objects/transitionButton';
+import DraggableImage from '../objects/draggableImage';
 
 export default class MainMenu extends Phaser.Scene {
-  private exampleObject: ExampleObject;
+    importantImage: DraggableImage;
+    startX: number;
+    startY: number;
 
-  constructor() {
-    super({ key: 'MainMenu' });
-  }
+    constructor() {
+        super({ key: 'MainMenu' });
+    }
 
-  init() {
+    init(data) {
+        this.startX = data.lastX;
+        this.startY = data.lastY;
+    }
 
-  }
+    create() {
+        this.importantImage = new DraggableImage(this, this.startX, this.startY, "main");
+        this.add.existing(this.importantImage);
 
-  create() {
-    this.add.image(0, 0, "main").setOrigin(0, 0);
+        this.add.existing(new TransitionButton(this, this.scale.height / 2, "Start Tutorial", () => {
+            this.scene.start("TutorialScene", this.getLastXY());
+        }))
+    }
 
-    this.add.existing(new TransitionButton(this, this.scale.height / 2, "Start Tutorial", () => {
-      this.scene.start("TutorialScene");
-    }))
-  }
+    getLastXY() {
+        return { lastX: this.importantImage.x, lastY: this.importantImage.y };
+    }
 
-  update() {
-  }
+    update() {
+    }
 }

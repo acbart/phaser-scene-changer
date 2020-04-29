@@ -1,26 +1,35 @@
-import ExampleObject from '../objects/exampleObject';
 import { TransitionButton } from '../objects/transitionButton';
-import LevelScene from './levelScene';
+import DraggableImage from '../objects/draggableImage';
 
 export default class TutorialScene extends Phaser.Scene {
-    private exampleObject: ExampleObject;
+    importantImage: DraggableImage;
+    startX: number;
+    startY: number;
 
     constructor() {
         super({ key: 'TutorialScene' });
     }
 
-    init() {
-
+    init(data) {
+        this.startX = data.lastX;
+        this.startY = data.lastY;
     }
 
     create() {
-        this.add.image(0, 0, "tutorial").setOrigin(0, 0);
+        this.importantImage = new DraggableImage(this, this.startX, this.startY, "tutorial");
+        this.add.existing(this.importantImage);
 
         this.add.existing(new TransitionButton(this, this.scale.height / 2, "Begin Level 1", () => {
-            this.scene.start("LevelScene", { levelNumber: 1 });
+            let data = this.getLastXY();
+            data['levelNumber'] = 1;
+            this.scene.start("LevelScene", data);
         }))
     }
 
     update() {
+    }
+
+    getLastXY() {
+        return { lastX: this.importantImage.x, lastY: this.importantImage.y };
     }
 }

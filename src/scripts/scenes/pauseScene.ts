@@ -1,9 +1,11 @@
-import ExampleObject from '../objects/exampleObject';
 import { TransitionButton } from '../objects/transitionButton';
+import DraggableImage from '../objects/draggableImage';
 
 export default class PauseScene extends Phaser.Scene {
-    private exampleObject: ExampleObject;
     previousScene: string;
+    importantImage: DraggableImage;
+    startX: number;
+    startY: number;
 
     constructor() {
         super({ key: 'PauseScene' });
@@ -11,10 +13,13 @@ export default class PauseScene extends Phaser.Scene {
 
     init(data) {
         this.previousScene = data.previousScene;
+        this.startX = data.lastX;
+        this.startY = data.lastY;
     }
 
     create() {
-        this.add.image(0, 0, "pause").setOrigin(0, 0);
+        this.importantImage = new DraggableImage(this, this.startX, this.startY, "pause");
+        this.add.existing(this.importantImage);
     }
 
     update() {
@@ -22,5 +27,9 @@ export default class PauseScene extends Phaser.Scene {
             this.scene.stop();
             this.scene.wake(this.previousScene);
         }));
+    }
+
+    getLastXY() {
+        return { lastX: this.importantImage.x, lastY: this.importantImage.y };
     }
 }
