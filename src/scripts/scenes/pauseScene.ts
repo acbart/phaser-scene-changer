@@ -20,6 +20,8 @@ export default class PauseScene extends Phaser.Scene {
     create() {
         this.importantImage = new DraggableImage(this, this.startX, this.startY, "pause");
         this.add.existing(this.importantImage);
+
+        this.add.text(0, this.scale.height, "The pause screen's image is not saved!").setOrigin(0, 1);
     }
 
     update() {

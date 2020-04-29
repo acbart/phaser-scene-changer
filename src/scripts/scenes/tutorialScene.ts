@@ -19,6 +19,8 @@ export default class TutorialScene extends Phaser.Scene {
         this.importantImage = new DraggableImage(this, this.startX, this.startY, "tutorial");
         this.add.existing(this.importantImage);
 
+        this.add.text(0, this.scale.height, "The image is draggable.\nThe position is remembered between scenes.").setOrigin(0, 1);
+
         this.add.existing(new TransitionButton(this, this.scale.height / 2, "Begin Level 1", () => {
             let data = this.getLastXY();
             data['levelNumber'] = 1;
